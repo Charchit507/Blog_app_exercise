@@ -1,0 +1,18 @@
+<div class="col-span-3">
+  <%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
+    <!-- Uncomment the following lines if you want to display the commenter input field -->
+    <!-- <div class="mb-4">
+      <%= form.label :commenter, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :commenter, class: "block w-full mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+    </div> -->
+
+    <div class="mb-4">
+      <%= form.label :body, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_area :body, class: "block w-full mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+    </div>
+
+    <div class="mt-4">
+      <%= form.submit "Submit", class: "inline-block w-[200px] px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold rounded-md shadow-md transition duration-300 ease-in-out" %>
+    </div>
+  <% end %>
+</div>

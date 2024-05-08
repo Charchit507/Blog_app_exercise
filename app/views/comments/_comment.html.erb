@@ -1,0 +1,17 @@
+<div class="border border-gray-200 p-4 rounded-lg mb-4">
+  <p class="text-lg font-semibold">
+    <strong>Commenter:</strong>
+    <%= comment.user.full_name %>
+  </p>
+  <p class="text-base">
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+
+  <% if current_user && current_user == comment.user %>
+    <div class="mt-4">
+      <%= link_to 'Destroy Comment', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: "inline-block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded shadow-md" %>
+    </div>
+    <hr class="my-4 border-t border-gray-200">
+  <% end %>
+</div>

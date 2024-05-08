@@ -1,0 +1,34 @@
+<div class="flex flex-col w-full">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-bold shadow">ARTICLES</h1>
+    <%= link_to 'New article', new_article_path, class: "btn bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded shadow-lg" %>
+  </div>
+
+  <table class="w-full table-auto bg-white border border-gray-200 shadow-lg">
+    <thead>
+      <tr class="bg-gray-800 text-white">
+        <th class="px-4 py-2 w-[25rem]">Title</th>
+        <th class="px-4 py-2">Text</th>
+        <th class="px-4 py-2" colspan="3">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr class="border-t border-gray-200">
+          <td class="px-4 py-2 text-center"><%= article.title %></td>
+          <td class="px-4 py-2 text-center w-[40rem]"><%= article.text %></td>
+          <td class="px-4 py-2 text-center flex justify-evenly">
+         
+          <%= link_to 'Destroy', article_path(article), data: { turbo_method: :delete, confirm: 'Are you sure?' }, method: :delete, class: "text-red-500 hover:underline ml-2" %>
+          <%= link_to 'Show', article_path(article), class: "text-blue-500 hover:underline" %>
+          <%= link_to 'Edit', edit_article_path(article), class: "text-blue-500 hover:underline ml-2" %>
+        </td>
+        
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="mt-4">
+    <%= paginate @articles, class: "flex justify-center items-center" %>
+  </div>
+</div>
